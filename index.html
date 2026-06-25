@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>点検報告書作成</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body class="bg-gray-50 p-4">
+<div class="max-w-3xl mx-auto bg-white p-6 rounded shadow">
+<h1 class="text-xl font-bold mb-4">点検報告書作成</h1>
+
+<!-- データ読込/保存 -->
+<div class="mb-4 p-3 bg-blue-50 rounded">
+<input type="file" id="loadFile" accept=".json" class="mr-2">
+<button onclick="loadData()" class="bg-blue-600 text-white px-3 py-1 rounded">データ読込</button>
+<button onclick="saveData()" class="bg-green-600 text-white px-3 py-1 rounded ml-2">JSON保存・ID発行</button>
+<span id="inspectId" class="ml-3 font-mono"></span>
+<div id="qrcode" class="mt-2"></div>
+</div>
+
+<!-- 基本情報・点検項目は既存の内容をここに配置 -->
+<div id="output"></div>
+<button onclick="makePdf(false)" class="bg-gray-800 text-white px-4 py-2 rounded mt-4">写真なしPDF出力</button>
+<button onclick="makePdf(true)" class="bg-orange-600 text-white px-4 py-2 rounded mt-2 ml-2">写真付きPDF出力</button>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
